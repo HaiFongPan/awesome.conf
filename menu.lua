@@ -69,12 +69,12 @@
  }
 
 xdgmenu = {
-    {"Internet", menuc8205c7636e728d448c2774e6a4a944b},
-    {"办公", menudb53804b7d726967c58fcc8c9ca03d27},
-    {"图像", menue1b7cee794666669f55acead93513971},
-    {"影音", menu526fe18cc54d217db3fdb0bf6c5e9bc8},
-    {"系统工具", menude71492af019157e5a5ef958b570e760},
-    {"编程", menu41282bf95e43c64d579757573a03cdde},
-    {"附件", menuc9a6ee90f5d43732e3f6cf4dcaa8493c},
+    {"Internet", menuc8205c7636e728d448c2774e6a4a944b,"/usr/share/icons/elementary-xfce/categories/16/xfce-internet.svg"},
+    {"办公", menudb53804b7d726967c58fcc8c9ca03d27,"/usr/share/icons/elementary-xfce/categories/16/applications-office.png"},
+    {"图像", menue1b7cee794666669f55acead93513971,"/usr/share/icons/elementary-xfce/categories/16/applications-graphics.png"},
+    {"影音", menu526fe18cc54d217db3fdb0bf6c5e9bc8,"/usr/share/icons/elementary-xfce/categories/16/applications-games.png"},
+    {"系统工具", menude71492af019157e5a5ef958b570e760,"/usr/share/icons/elementary-xfce/categories/16/xfce4-settings.svg"},
+    {"编程", menu41282bf95e43c64d579757573a03cdde,"/usr/share/icons/elementary-xfce/categories/16/xfce-devel.svg"},
+    {"附件", menuc9a6ee90f5d43732e3f6cf4dcaa8493c,"/usr/share/icons/elementary-xfce/categories/16/applications-utilities.png"},
 }
 

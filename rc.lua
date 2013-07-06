@@ -109,7 +109,7 @@ end
 
 
 
-tags_name = { "Terminal", "Chrome", "<><", "IM" }
+tags_name = { "Term", "Web", "☺", "☏" }
 tags_layout = {
     awful.layout.suit.spiral,
     awful.layout.suit.max,
@@ -146,13 +146,13 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   }
                         })
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
-  { "open terminal", "xfce4-terminal", "/usr/share/icons/gnome/16x16/apps/utilities-terminal.png" },
+  { "Term", "xfce4-terminal", "/usr/share/icons/gnome/16x16/apps/utilities-terminal.png" },
   { "Sublime", "subl", '/usr/share/icons/hicolor/16x16/apps/sublime_text.png'  },
-  { "Chrome (&C)", "/opt/google/chrome/google-chrome ", "/usr/share/icons/hicolor/16x16/apps/google-chrome.png" },
-  { "Thunar", "thunar ", "/usr/share/icons/hicolor/16x16/apps/Thunar.png" },
-  { "应用程序 (&A)", xdgmenu },
----  { "挂起 (&S)", "mysuspend" },
-  { "关机 (&H)", "systemctl poweroff", '/usr/share/icons/gnome/16x16/actions/gtk-quit.png' },
+  { "Chromium (&C)", "chromium ", "/usr/share/icons/hicolor/16x16/apps/chromium.png" },
+  { "Thunar", "thunar", "/usr/share/icons/elementary-xfce/apps/16/Thunar.svg" },
+  { "应用程序 (&A)", xdgmenu ,"/home/leo/Dropbox/「图片」/Fav/arch-linux-logo.png"},
+  { "挂起 (&S)", "sudo pm-suspend" ,"/usr/share/icons/elementary-xfce/actions/16/lock.svg"},
+  { "关机 (&H)", "systemctl poweroff", "/usr/share/icons/elementary-xfce/actions/16/gtk-quit.svg"},
     } 
 })
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
@@ -179,9 +179,9 @@ function volumectl (mode, widget)
         local muted = f:read("*all")
         f:close()
         if muted == "false" then
-            volume = '|♫' .. volume .. "%|"
+            volume = '|♬' .. volume .. "%|"
         else
-            volume = '|♫' .. volume .."<span color='red'>M</span>" .. '|'
+            volume = '|♬' .. volume .."<span color='red'>M</span>" .. '|'
         end
         widget:set_markup(volume)
     elseif mode == "up" then
@@ -427,6 +427,9 @@ globalkeys = awful.util.table.join(
     awful.key({ }, 'XF86AudioLowerVolume', function () volumectl("down", volumewidget) end),
     awful.key({ }, 'XF86AudioMute', function () volumectl("mute", volumewidget) end)
 
+    --Custom key
+    -- awful.key({ modkey, }, "e", "thunar")
+
 )
 
 clientkeys = awful.util.table.join(
@@ -526,6 +529,10 @@ awful.rules.rules = {
       properties = { tag = tags[1][3] } },
     { rule = { class = "google-chrome" },
       properties = { tag = tags[1][2] } },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[1][2] } },
+    { rule = { class = "xfce4-terminal" },
+      properties = { tag = tags[1][1] } },
     { rule = { class = "fcitx" },
       properties = { border_width = 0 } },
     { rule = { class = "MPlayer" },
