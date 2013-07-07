@@ -96,20 +96,7 @@ if beautiful.wallpaper then
 end
 -- }}}
 
--- {{{ Tags
--- Define a tag table which hold all screen tags.
--- tags = {}
--- for s = 1, screen.count() do
---     -- Each screen has its own tag table.
---     tags[s] = awful.tag({ "Terminal", "Chrome", "<><", "IM" }, s, layouts[1])
--- end
--- }}}
-
-
-
-
-
-tags_name = { "Term", "Web", "☺", "☏" }
+tags_name = { "❶", "❷", "❸", "❹" }
 tags_layout = {
     awful.layout.suit.spiral,
     awful.layout.suit.max,
@@ -124,13 +111,6 @@ for s = 1, screen.count() do
     --     revtags[s][t] = i
     -- end
 end
-
-
-
-
-
-
-
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
@@ -179,9 +159,9 @@ function volumectl (mode, widget)
         local muted = f:read("*all")
         f:close()
         if muted == "false" then
-            volume = '|♬' .. volume .. "%|"
+            volume = "| <span color='SteelBlue'>♬[" .. volume .. "%]</span> | "
         else
-            volume = '|♬' .. volume .."<span color='red'>M</span>" .. '|'
+            volume = "| <span color='Salmon'>♬[" .. volume .."M]</span>" .. ' | '
         end
         widget:set_markup(volume)
     elseif mode == "up" then
@@ -206,7 +186,7 @@ volume_clock:connect_signal("timeout", function () volumectl("update", volumewid
 volume_clock:start()
 
 volumewidget = fixwidthtextbox('(volume)')
-volumewidget.width = 60
+volumewidget.width = 80
 volumewidget:set_align('right')
 volumewidget:buttons(awful.util.table.join(
     awful.button({ }, 4, function () volumectl("up", volumewidget) end),
@@ -219,8 +199,8 @@ volumectl("update", volumewidget)
 local battery_state = {
     charging     = '<span color="yellow">? ',
     idle        = '<span color="#0000ff">↯',
-    unknown    = '<span color="green">+ ',
-    Discharging = '<span color="#1e90ff">– ',
+    unknown    = '<span color="green">⟰ ',
+    Discharging = '<span color="Tomato">⟱ ',
 }
 function update_batwidget()
     local bat_dir = "/sys/class/power_supply/BAT0/"
@@ -247,12 +227,12 @@ function update_batwidget()
     local percent = math.ceil((now_n/full_n)*100)
     f:close()
     if percent <= 35 then
-        percent = '<span color="red">' .. percent .. '</span>' .. '|'
+        percent = '<span color="red">' .. percent .. '</span>' .. ' | '
     end
-    batwidget:set_markup(state .. percent .. '%</span>' .. '|')
+    batwidget:set_markup(state .. percent .. '%</span>' .. ' | ')
 end
 batwidget = fixwidthtextbox('↯??%')
-batwidget.width = 55
+batwidget.width = 70
 update_batwidget()
 bat_clock = timer({ timeout = 5 })
 bat_clock:connect_signal("timeout", update_batwidget)
