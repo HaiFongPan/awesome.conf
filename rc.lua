@@ -130,9 +130,9 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
   { "Sublime", "subl", '/usr/share/icons/hicolor/16x16/apps/sublime_text.png'  },
   { "Chromium (&C)", "chromium ", "/usr/share/icons/hicolor/16x16/apps/chromium.png" },
   { "Thunar", "thunar", "/usr/share/icons/elementary-xfce/apps/16/Thunar.svg" },
-  { "应用程序 (&A)", xdgmenu ,"/home/leo/Dropbox/「图片」/Fav/arch-linux-logo.png"},
-  { "挂起 (&S)", "sudo pm-suspend" ,"/usr/share/icons/elementary-xfce/actions/16/lock.svg"},
-  { "关机 (&H)", "systemctl poweroff", "/usr/share/icons/elementary-xfce/actions/16/gtk-quit.svg"},
+  { "Application (&A)", xdgmenu ,"/home/leo/Dropbox/「图片」/Fav/arch-linux-logo.png"},
+  { "Suspend (&S)", "sudo pm-suspend" ,"/usr/share/icons/elementary-xfce/actions/16/lock.svg"},
+  { "Shutdown (&H)", "systemctl poweroff", "/usr/share/icons/elementary-xfce/actions/16/gtk-quit.svg"},
     } 
 })
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
@@ -479,24 +479,6 @@ root.keys(globalkeys)
 -- }}}
 
 -- {{{ Rules
-floating_apps = {
-    class = {
-        'MPlayer', 'Flashplayer', 'Gnome-mplayer', 'Totem',
-        'Eog', 'feh', 'Display', 'Gimp', 'Gimp-2.6',
-        'Screenkey', 'TempTerm', 'AliWangWang',
-        'Dia', 'Pavucontrol', 'Stardict', 'XEyes', 'Skype',
-    },
-    name = {
-        '文件传输', 'Firefox 首选项', '暂存器', 'Keyboard',
-    },
-    instance = {
-        'Browser', -- 火狐的关于对话框
-        'MATLAB', -- splash
-    },
-    role = {
-        'TempTerm',
-    },
-}
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -507,8 +489,6 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "subl" },
       properties = { tag = tags[1][3] } },
-    { rule = { class = "google-chrome" },
-      properties = { tag = tags[1][2] } },
     { rule = { class = "Chromium" },
       properties = { tag = tags[1][2] } },
     { rule = { class = "xfce4-terminal" },
