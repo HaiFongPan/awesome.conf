@@ -22,12 +22,11 @@ if awesome.startup_errors then
                      text = awesome.startup_errors })
 end
 -- Autorun start
-
 autorun = true
 autorunApps = 
 { 
-    "pidgin",
-    "fcitx",    
+    "pidgin", 
+    "fcitx",  
     "dropboxd"
 }
 
@@ -60,8 +59,8 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xfce4-terminal"
-editor = "vim"
-editor_cmd = editor
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -129,8 +128,8 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
   { "Term", "xfce4-terminal", "/usr/share/icons/gnome/16x16/apps/utilities-terminal.png" },
   { "Sublime", "subl", '/usr/share/icons/hicolor/16x16/apps/sublime_text.png'  },
   { "Chromium (&C)", "chromium ", "/usr/share/icons/hicolor/16x16/apps/chromium.png" },
-  { "Thunar", "thunar", "/usr/share/icons/elementary-xfce/apps/16/Thunar.svg" },
-  { "Application (&A)", xdgmenu ,"/home/leo/Dropbox/「图片」/Fav/arch-linux-logo.png"},
+  { "Thunar (&E)", "thunar", "/usr/share/icons/elementary-xfce/apps/16/Thunar.svg" },
+  { "Application", xdgmenu ,"/mnt/E/Dropbox/「图片」/Fav/arch-linux-logo.png"},
   { "Suspend (&S)", "sudo pm-suspend" ,"/usr/share/icons/elementary-xfce/actions/16/lock.svg"},
   { "Shutdown (&H)", "systemctl poweroff", "/usr/share/icons/elementary-xfce/actions/16/gtk-quit.svg"},
     } 
@@ -410,6 +409,7 @@ globalkeys = awful.util.table.join(
     --Custom key
     -- awful.key({ modkey, }, "e", "thunar")
 
+
 )
 
 clientkeys = awful.util.table.join(
@@ -500,7 +500,7 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
-      properties = { floating = true } },
+      properties = { floating = true },tag = tags[1][4]},
     { rule = { class = "Pidgin", role = "buddy_list" },
       properties = { x = 1000, y = 100, w = 160, h = 200, tag = tags[1][4] } },
     { rule = { class = "Pidgin", role = "conversation" },
